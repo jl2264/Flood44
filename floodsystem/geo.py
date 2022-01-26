@@ -27,4 +27,28 @@ def stations_within_radius(stations, centre, r):
     list_station_in_radius.sort()
     return list_station_in_radius
 
+def rivers_with_station(stations):
+    list_rivers = []
+    for i in stations:
+        if i.river in list_rivers:
+            skip
+        else:
+            list_rivers.append(i.river)
+    
+    return list_rivers
+
+def stations_by_river(stations):
+    dict_stations_by_river = {}
+    for i in stations:
+        if i.river in dict_stations_by_river:
+           lista = dict_stations_by_river[i.river]
+           lista.append(i.name)
+           lista.sort()
+           dict_stations_by_river[i.river] = lista
+        else:
+            dict_stations_by_river[i.river] = [i.name]
+    
+    return dict_stations_by_river
+
+     
 
