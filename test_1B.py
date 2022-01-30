@@ -4,8 +4,6 @@ from attr import define
 from numpy import append
 from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
-import floodsystem.station
-from haversine import haversine, Unit
 import numpy as np
 
 def test_stations_by_distance():
