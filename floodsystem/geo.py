@@ -5,8 +5,10 @@
 geographical data.
 
 """
+from audioop import reverse
 from haversine import haversine, Unit
 from pytest import skip
+from sqlalchemy import true
 from .utils import sorted_by_key  # noqa
 
 def stations_by_distance(stations, p):
@@ -49,6 +51,22 @@ def stations_by_river(stations):
             dict_stations_by_river[i.river] = [i.name]
     
     return dict_stations_by_river
+
+def rivers_by_station_number(stations, N):
+    dict_rivers_station_no = {}
+    for i in stations:
+        if i.river in dict_rivers_station_no:
+            dict_rivers_station_no[i.river] += 1
+        else:
+            dict_rivers_station_no[i.river] = 1
+    list_rivers_station_no = list(dict_rivers_station_no.items())
+    list_rivers_station_no =  sorted_by_key(list_rivers_station_no, 1)
+    list_rivers_station_no.reverse()
+    #list_rivers_station_no = sorted(dict_rivers_station_no.items() , reverse=True, key=lambda x: x[1])
+    while (list_rivers_station_no[N-1])[1] == (list_rivers_station_no[N])[1]:
+            N += 1
+    list_N_rivers_station_no = list_rivers_station_no[:N]
+    return list_N_rivers_station_no
 
      
 
