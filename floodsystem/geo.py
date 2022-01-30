@@ -6,7 +6,7 @@ geographical data.
 
 """
 from audioop import reverse
-import haversine
+from haversine import haversine
 from pytest import skip
 from sqlalchemy import true
 from .utils import sorted_by_key  # noqa

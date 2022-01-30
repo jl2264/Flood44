@@ -3,6 +3,7 @@ from numpy import append
 from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
 
+
 def run():
 
     stations = build_station_list()
