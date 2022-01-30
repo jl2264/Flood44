@@ -9,8 +9,11 @@ def test_stations_by_distance():
     p = np.random.rand(2)
     list_test_1B = stations_by_distance(stations, p)
 
-    assert len(list_test_1B) > 0
+    assert len(list_test_1B) == len(stations)
+    # all stations
     
     for x in range(len(list_test_1B)-1):
         assert (list_test_1B[x])[2] <= (list_test_1B[x+1])[2]
+    # ascending
+
 
