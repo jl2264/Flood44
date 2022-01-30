@@ -1,7 +1,4 @@
-from attr import define
-from numpy import append
-from pytest import Item
-from sympy import N
+
 from floodsystem.geo import rivers_with_station, stations_by_river
 from floodsystem.stationdata import build_station_list
 

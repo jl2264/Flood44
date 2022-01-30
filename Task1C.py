@@ -1,5 +1,4 @@
-from attr import define
-from numpy import append
+
 from floodsystem.geo import stations_within_radius
 from floodsystem.stationdata import build_station_list
    
