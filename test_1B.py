@@ -1,7 +1,4 @@
 
-from re import X
-from attr import define
-from numpy import append
 from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
 import numpy as np

@@ -4,14 +4,13 @@ from pytest import Item
 from sympy import N
 from floodsystem.geo import rivers_with_station, stations_by_river
 from floodsystem.stationdata import build_station_list
-import floodsystem.station
 
 def run():
     stations = build_station_list()
 
     rivers_full = rivers_with_station(stations)
     rivers_full.sort()
-    
+
     dict_stations_1D = stations_by_river(stations)
 
     print('Numbers of rivers monitored : ', len(rivers_full), '\n First 10 - ', rivers_full[:10], '\n\n')
