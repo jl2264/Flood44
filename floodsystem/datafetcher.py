@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: MIT
 """This module provides functionality for retrieving real-time and
 latest time history level data
-
 """
 
 import datetime
