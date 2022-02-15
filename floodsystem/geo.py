@@ -61,11 +61,19 @@ def rivers_by_station_number(stations, N):
             dict_rivers_station_no[i.river] = 1
     list_rivers_station_no = list(dict_rivers_station_no.items())
     list_rivers_station_no =  sorted_by_key(list_rivers_station_no, 1, reverse=True)
+
     #list_rivers_station_no.reverse()
     #list_rivers_station_no = sorted(dict_rivers_station_no.items() , reverse=True, key=lambda x: x[1])
-    while (list_rivers_station_no[N-1])[1] == (list_rivers_station_no[N])[1]:
+    '''print(list_rivers_station_no)'''
+    if N == len(list_rivers_station_no):
+        return list_rivers_station_no
+    else:
+        while (list_rivers_station_no[N-1])[1] == (list_rivers_station_no[N])[1]:
             N += 1
+            if N == len(list_rivers_station_no):
+                break
     list_N_rivers_station_no = list_rivers_station_no[:N]
+
     return list_N_rivers_station_no
 
      

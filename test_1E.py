@@ -49,7 +49,9 @@ def test_rivers_by_station_number_large_N():
     s8 = MonitoringStation(river='river3', station_id=1, measure_id=1, label='label1', coord=(float(52.2053), float(0.1218)), typical_range='typical_range', town='town')
     s9 = MonitoringStation(river='river3', station_id=1, measure_id=1, label='label1', coord=(float(52.2053), float(0.1218)), typical_range='typical_range', town='town')
     s10 = MonitoringStation(river='river4', station_id=1, measure_id=1, label='label1', coord=(float(52.2053), float(0.1218)), typical_range='typical_range', town='town')
-    
+    s11 = MonitoringStation(river='river5', station_id=1, measure_id=1, label='label1', coord=(float(52.2053), float(0.1218)), typical_range='typical_range', town='town')
+    s12 = MonitoringStation(river='river6', station_id=1, measure_id=1, label='label1', coord=(float(52.2053), float(0.1218)), typical_range='typical_range', town='town')
+
     stations.append(s1)
     stations.append(s2)
     stations.append(s3)
@@ -60,7 +62,11 @@ def test_rivers_by_station_number_large_N():
     stations.append(s8)
     stations.append(s9)
     stations.append(s10)
+    stations.append(s11)
+    stations.append(s12)
+   
 
+<<<<<<< HEAD
     list_test_1E = rivers_by_station_number(stations, 3)
 
     assert len(list_test_1E) == 3   # all four rivers should be returned
@@ -68,4 +74,16 @@ def test_rivers_by_station_number_large_N():
     assert list_test_1E[1] == ('river1', 3)   
     assert list_test_1E[2] == ('river3', 2)   
     #assert list_test_1E[3] == ('river4', 1)   
+=======
+    list_test_1E = rivers_by_station_number(stations, 4)
+
+    assert len(list_test_1E) == 6  # all rivers should be returned
+    assert list_test_1E[0] == ('river2', 4)
+    assert list_test_1E[1] == ('river1', 3)   
+    assert list_test_1E[2] == ('river3', 2)   
+    assert list_test_1E[3] == ('river4', 1)
+    assert list_test_1E[4] == ('river5', 1)
+    assert list_test_1E[5] == ('river6', 1)
+
+>>>>>>> 341f0d9d886f08cc1fc74760fb98732c1d477d81
 
