@@ -1,9 +1,10 @@
+import datetime
 
 from floodsystem.station import MonitoringStation
-from floodsystem.stationdata import build_station_list, update_water_levels
-from floodsystem.flood import stations_highest_rel_level
+from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.stationdata import build_station_list
 
-def test_stations_highest_rel_level():
+def test_fetch_measure_levels():
 
     stations = []
 
@@ -91,7 +92,7 @@ def test_stations_highest_rel_level():
     assert list_test_2C[0] == (s4.name, s4.relative_water_level())
     assert list_test_2C[3] == (s1.name, s1.relative_water_level())
 
-    #also test s5 with no water level data is not in list test
+    #also test s5 with no water level data excluded
     assert (s5.name, s5.relative_water_level()) not in list_test_2C
 
 test_stations_highest_rel_level()
