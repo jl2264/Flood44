@@ -1,98 +1,52 @@
-import datetime
 
 from floodsystem.station import MonitoringStation
+import datetime
+
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
 
+#def test_fetch_measure_levels():
+
 def test_fetch_measure_levels():
 
-    stations = []
+    # Build list of stations
+    stations = build_station_list()
 
-    #make 6 similar stations 
-    #change name and water level so that 4 will be in final list test by setting N to 4 at the end
+    # Station name to find
+    station_name = "Cam"
 
-    s1 = MonitoringStation(
-    station_id=1,
-    measure_id=1,
-    label='label1',
-    coord=(float(52.2053), float(0.1218)),
-    typical_range=(2,3),
-    river='river',
-    town='town')
-    s1.latest_level = 2.5   #in list
-    s1.relative_water_level()
+    # Find station
+    station_cam = None
+    for station in stations:
+        if station.name == station_name:
+            station_cam = station
+            break
 
-    s2 = MonitoringStation(
-    station_id=2,
-    measure_id=2,
-    label='label2',
-    coord=(float(52.2053), float(0.1218)),
-    typical_range=(2,3),
-    river='river',
-    town='town')
-    s2.latest_level = 2.9   #in list
-    s2.relative_water_level()   
+    # Check that station could be found. Return if not found.
+    if not station_cam:
+        print("Station {} could not be found".format(station_name))
+        return
 
-    s3 = MonitoringStation(
-    station_id=3,
-    measure_id=3,
-    label='label3',
-    coord=(float(52.2053), float(0.1218)),
-    typical_range=(2,3),
-    river='river',
-    town='town')
-    s3.latest_level = 0.9 #not in list
-    s3.relative_water_level()   
+    # Alternative find station 'Cam' using the Python 'next' function
+    # (https://docs.python.org/3/library/functions.html#next). Raises
+    # an exception if station is not found.
+    # try:
+    #     station_cam = next(s for s in stations if s.name == station_name)
+    # except StopIteration:
+    #     print("Station {} could not be found".format(station_name))
+    #     return
 
-    s4 = MonitoringStation(
-    station_id=4,
-    measure_id=4,
-    label='label4',
-    coord=(float(52.2053), float(0.1218)),
-    typical_range=(2,3),
-    river='river',
-    town='town')
-    s4.latest_level = 25    #in list
-    s4.relative_water_level()
+    # Fetch data over past 2 days
+    dt = 2
+    dates, levels = fetch_measure_levels(
+        station_cam.measure_id, dt=datetime.timedelta(days=dt))
 
-    s5 = MonitoringStation(
-    station_id=5,
-    measure_id=5,
-    label='label5',
-    coord=(float(52.2053), float(0.1218)),
-    typical_range=(2,3),
-    river='river',
-    town='town')
-    s5.latest_level = None    #not in list
-    s5.relative_water_level()
+    # Print level history
+    for date, level in zip(dates, levels):
+        print(date, level)
+    assert type((dates, levels)) is tuple
 
-    s6 = MonitoringStation(
-    station_id=6,
-    measure_id=6,
-    label='label6',
-    coord=(float(52.2053), float(0.1218)),
-    typical_range=(2,3),
-    river='river',
-    town='town')
-    s6.latest_level = 2.9    #in list
-    s6.relative_water_level()
-      
-    stations.append(s1)
-    stations.append(s2)
-    stations.append(s3)
-    stations.append(s4)
-    stations.append(s5)
-    stations.append(s6)
 
-    list_test_2C = stations_highest_rel_level(stations, 4)
-
-    assert len(list_test_2C) == 4   # only ten stations in list 
-
-    #should also test [0] is s4, [3] is s1 
-    assert list_test_2C[0] == (s4.name, s4.relative_water_level())
-    assert list_test_2C[3] == (s1.name, s1.relative_water_level())
-
-    #also test s5 with no water level data excluded
-    assert (s5.name, s5.relative_water_level()) not in list_test_2C
-
-test_stations_highest_rel_level()
+if __name__ == "__main__":
+    print("*** Task 2D: CUED Part IA Flood Warning System ***")
+    test_fetch_measure_levels()
