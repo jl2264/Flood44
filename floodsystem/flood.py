@@ -20,3 +20,12 @@ def stations_highest_rel_level(stations, N):
              list.append((i.name, i.relative_water_level()))
     return sorted_by_key(list, 1, reverse=True)[:N]
 
+#calculate relative water level for each station, return list of names and level sorted alphabetically
+def stations_highest_rel_level_2G(stations):
+    list = []
+    for i in stations:
+        if i.relative_water_level() == None:
+            skip
+        else:
+             list.append((i.name, i.relative_water_level()))
+    return sorted_by_key(list, 0)
