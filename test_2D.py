@@ -44,7 +44,7 @@ def test_fetch_measure_levels():
     # Print level history
     for date, level in zip(dates, levels):
         print(date, level)
-    assert type((dates, levels)) is tuple
+    assert type((dates,levels)) is tuple
 
 
 if __name__ == "__main__":
