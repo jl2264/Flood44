@@ -10,7 +10,7 @@ from pytest import skip
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_highest_rel_level
-from floodsystem.plot import plot_water_level_with_fit, plot_water_levels
+from floodsystem.plot import plot_water_level_with_fit
 import numpy as np
 
 
@@ -80,7 +80,7 @@ def test_plot_water_level_with_fit():
     #plot second test graph, has very spiky data, p = 4
     test_graph_2 = plot_water_level_with_fit(s2, dates, levels2, 4)
     #can see that when p (degree of polynomial) increased, best-fit polynomial matches data more closely
-    test_graph_2 = plot_water_level_with_fit(s2, dates, levels2, 20)
+    test_graph_2 = plot_water_level_with_fit(s2, dates, levels2, 15)
 
     #convert dates to floats so they can be worked with as function arguments
     dates_converted = matplotlib.dates.date2num(dates)  
