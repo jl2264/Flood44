@@ -45,21 +45,12 @@ def slope(x1, y1, x2, y2):
 
 def relative_level_rising_rate(station, dates, levels):
     dates1 = matplotlib.dates.date2num(dates)
-    rates_of_change = []
     sum = 0
     for i in range(len(dates1)):
         local_rate_of_change = slope(dates1[i-1], levels[i-1], dates1[i], levels[i])
         sum += local_rate_of_change
-        rates_of_change.append(local_rate_of_change)
     overall_rate = sum/len(dates1)
     return overall_rate
-'''
-    for i in range(-1, -20):
-        sum += float(rates_of_change[i])
-    overall_rate = sum/20
-    return overall_rate
-
-'''
 
 
 
